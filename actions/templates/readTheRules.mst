@@ -1,0 +1,33 @@
+<div class = "phoneAnalog massive">
+<div class = "phoneAnalogGreeting">
+    The rules (a.k.a. covering our asses)
+</div>
+<div class = "phoneAnalogText dense">
+    <div class = 'important'>Violation of any of these rules may result in your account becoming permanently disabled.</div>
+    <hr/>
+    <ol>
+        <li>Honour the <a href = "http://laws-lois.justice.gc.ca/eng/acts/C-42/index.html">Canadian Copyright Act</a>
+            if posting copyrighted works.  Any violations may be removed without notice.</li>
+        <li>Do not advertise on the site without permission from Boothi.ca.</li>
+        <li>Do not harrass or threaten Boothi.ca's users (or Boothi.ca in general).</li>
+        <li>Do not use Boothi.ca as a platform for organizing raids on other sites/web resources.</li>
+        <li>Do not post nudity.</li>
+        <li>Understand that Boothi.ca owns the rights to all media posted to this site and may use your photos in
+            promotional material without warning. (we'll ask if we can!)</li>
+    </ol>
+    <i>These rules are subject to change at any time.</i>
+</div>
+
+<div class = "phoneAnalogText">
+    You must follow these rules to use Boothi.ca
+</div>
+
+<form action = "{{baseUrl}}/actions/confirmregistration" method="get">
+    <div class = "phoneAnalogButton bottom">
+        <input type = "hidden" value = "{{confirmationCode}}" id = "z" name = "z"/>
+        <input type = "hidden" value = "{{username}}" id = "username" name = "username"/>
+        <input type = "hidden" value = "yes" id = "agree" name = "agree"/>
+        <button>I agree to the rules</button>
+    </div>
+</form>
+</div>
