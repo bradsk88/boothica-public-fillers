@@ -11,7 +11,8 @@ function connect_boothDB() {
         return null;
     }
 
-    $dblink = mysqli_connect('localhost', 'root', '', 'clicar5_boothsite') or death("Error " . mysqli_error($dblink));
+    $dblink = mysqli_connect('localhost', 'root', '', 'clicar5_boothsite')
+      or death("Error.  Unable to connect to database named: 'clicar5_boothsite'.  " . mysqli_error($dblink));
     if (!$dblink) {
         mysql_error();
     }
