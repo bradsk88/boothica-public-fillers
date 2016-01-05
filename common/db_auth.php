@@ -5,6 +5,12 @@ function connect_boothDB() {
         return $dblink;
     }
 
+    if (!function_exists('mysqli_connect')) {
+        // Will be true on localhost if the user hasn't installed mysql and enabled it in php.ini
+        error_log("FATAL ERROR: No MYSQLI installation detected!");
+        return null;
+    }
+
     $dblink = mysqli_connect('localhost', 'root', '', 'clicar5_boothsite') or death("Error " . mysqli_error($dblink));
     if (!$dblink) {
         mysql_error();
