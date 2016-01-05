@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 01, 2015 at 03:50 PM
+-- Generation Time: Jan 04, 2016 at 10:44 PM
 -- Server version: 5.5.42-cll
 -- PHP Version: 5.4.23
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `clicar5_boothsite`
 --
+CREATE DATABASE IF NOT EXISTS `clicar5_boothsite` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `clicar5_boothsite`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `activitytbl`
 --
 
+DROP TABLE IF EXISTS `activitytbl`;
 CREATE TABLE IF NOT EXISTS `activitytbl` (
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'the time at which the activity occurred',
   `fkUsername` varchar(32) NOT NULL COMMENT 'the user who did the activity',
@@ -39,6 +42,7 @@ CREATE TABLE IF NOT EXISTS `activitytbl` (
 -- Table structure for table `activity_speeduptbl`
 --
 
+DROP TABLE IF EXISTS `activity_speeduptbl`;
 CREATE TABLE IF NOT EXISTS `activity_speeduptbl` (
   `fkUsername` varchar(32) NOT NULL,
   `dateRangeEnd` datetime NOT NULL,
@@ -51,6 +55,7 @@ CREATE TABLE IF NOT EXISTS `activity_speeduptbl` (
 -- Table structure for table `agreementpendingtbl`
 --
 
+DROP TABLE IF EXISTS `agreementpendingtbl`;
 CREATE TABLE IF NOT EXISTS `agreementpendingtbl` (
   `fkUsername` varchar(32) NOT NULL,
   `code` varchar(256) NOT NULL,
@@ -63,6 +68,7 @@ CREATE TABLE IF NOT EXISTS `agreementpendingtbl` (
 -- Table structure for table `boothcommentrangetbl`
 --
 
+DROP TABLE IF EXISTS `boothcommentrangetbl`;
 CREATE TABLE IF NOT EXISTS `boothcommentrangetbl` (
   `fkBoothNumber` int(32) NOT NULL,
   `fkOldestComment` int(32) NOT NULL,
@@ -76,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `boothcommentrangetbl` (
 -- Table structure for table `boothnumbers`
 --
 
+DROP TABLE IF EXISTS `boothnumbers`;
 CREATE TABLE IF NOT EXISTS `boothnumbers` (
   `pkNumber` int(11) NOT NULL AUTO_INCREMENT,
   `requestHash` varchar(64) NOT NULL,
@@ -90,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `boothnumbers` (
   `source` varchar(32) NOT NULL DEFAULT 'unknown',
   `isPublic` tinyint(1) NOT NULL DEFAULT '1' COMMENT 'Is this specific booth public?',
   UNIQUE KEY `pkNumber` (`pkNumber`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Creates a new number for each new booth and assigns it to th' AUTO_INCREMENT=18968 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 COMMENT='Creates a new number for each new booth and assigns it to th' AUTO_INCREMENT=19095 ;
 
 -- --------------------------------------------------------
 
@@ -98,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `boothnumbers` (
 -- Table structure for table `booth_full_record_tbl`
 --
 
+DROP TABLE IF EXISTS `booth_full_record_tbl`;
 CREATE TABLE IF NOT EXISTS `booth_full_record_tbl` (
   `fkUsername` varchar(32) NOT NULL,
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -111,6 +119,7 @@ CREATE TABLE IF NOT EXISTS `booth_full_record_tbl` (
 -- Table structure for table `commentstbl`
 --
 
+DROP TABLE IF EXISTS `commentstbl`;
 CREATE TABLE IF NOT EXISTS `commentstbl` (
   `pkCommentNumber` int(32) NOT NULL AUTO_INCREMENT,
   `hash` varchar(32) NOT NULL,
@@ -124,7 +133,7 @@ CREATE TABLE IF NOT EXISTS `commentstbl` (
   `imageHeightProp` double NOT NULL DEFAULT '0.75',
   `adminPost` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`pkCommentNumber`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80197 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=80408 ;
 
 -- --------------------------------------------------------
 
@@ -132,6 +141,7 @@ CREATE TABLE IF NOT EXISTS `commentstbl` (
 -- Table structure for table `currencytbl`
 --
 
+DROP TABLE IF EXISTS `currencytbl`;
 CREATE TABLE IF NOT EXISTS `currencytbl` (
   `fkUsername` varchar(32) NOT NULL,
   `beta` int(11) NOT NULL DEFAULT '0' COMMENT 'Beta is the currency of this site.',
@@ -145,6 +155,7 @@ CREATE TABLE IF NOT EXISTS `currencytbl` (
 -- Table structure for table `emailchangetbl`
 --
 
+DROP TABLE IF EXISTS `emailchangetbl`;
 CREATE TABLE IF NOT EXISTS `emailchangetbl` (
   `fkUsername` varchar(32) NOT NULL,
   `email` varchar(64) NOT NULL,
@@ -158,6 +169,7 @@ CREATE TABLE IF NOT EXISTS `emailchangetbl` (
 -- Table structure for table `emailtbl`
 --
 
+DROP TABLE IF EXISTS `emailtbl`;
 CREATE TABLE IF NOT EXISTS `emailtbl` (
   `fkUsername` varchar(32) NOT NULL,
   `email` varchar(64) NOT NULL,
@@ -178,6 +190,7 @@ CREATE TABLE IF NOT EXISTS `emailtbl` (
 -- Table structure for table `frequencytbl`
 --
 
+DROP TABLE IF EXISTS `frequencytbl`;
 CREATE TABLE IF NOT EXISTS `frequencytbl` (
   `fkUsername` varchar(32) NOT NULL,
   `hour` smallint(2) NOT NULL,
@@ -192,6 +205,7 @@ CREATE TABLE IF NOT EXISTS `frequencytbl` (
 -- Table structure for table `friendstbl`
 --
 
+DROP TABLE IF EXISTS `friendstbl`;
 CREATE TABLE IF NOT EXISTS `friendstbl` (
   `fkUsername` varchar(32) NOT NULL,
   `fkFriendname` varchar(32) NOT NULL,
@@ -206,6 +220,7 @@ CREATE TABLE IF NOT EXISTS `friendstbl` (
 -- Table structure for table `groupstbl`
 --
 
+DROP TABLE IF EXISTS `groupstbl`;
 CREATE TABLE IF NOT EXISTS `groupstbl` (
   `pkGroupNumber` int(32) NOT NULL AUTO_INCREMENT,
   `groupName` varchar(32) NOT NULL,
@@ -218,6 +233,7 @@ CREATE TABLE IF NOT EXISTS `groupstbl` (
 -- Table structure for table `groups_userstbl`
 --
 
+DROP TABLE IF EXISTS `groups_userstbl`;
 CREATE TABLE IF NOT EXISTS `groups_userstbl` (
   `fkGroupName` varchar(32) NOT NULL,
   `fkUsername` varchar(32) NOT NULL,
@@ -231,6 +247,7 @@ CREATE TABLE IF NOT EXISTS `groups_userstbl` (
 -- Table structure for table `hackattemptstbl`
 --
 
+DROP TABLE IF EXISTS `hackattemptstbl`;
 CREATE TABLE IF NOT EXISTS `hackattemptstbl` (
   `ip` varchar(32) NOT NULL,
   `type` varchar(32) NOT NULL,
@@ -245,6 +262,7 @@ CREATE TABLE IF NOT EXISTS `hackattemptstbl` (
 -- Table structure for table `ignorestbl`
 --
 
+DROP TABLE IF EXISTS `ignorestbl`;
 CREATE TABLE IF NOT EXISTS `ignorestbl` (
   `fkUsername` varchar(32) NOT NULL COMMENT 'User X',
   `fkIgnoredName` varchar(32) NOT NULL COMMENT 'The user being ignored by user X ',
@@ -257,6 +275,7 @@ CREATE TABLE IF NOT EXISTS `ignorestbl` (
 -- Table structure for table `likes_boothstbl`
 --
 
+DROP TABLE IF EXISTS `likes_boothstbl`;
 CREATE TABLE IF NOT EXISTS `likes_boothstbl` (
   `fkBoothNumber` int(11) NOT NULL,
   `fkUsername` varchar(32) NOT NULL,
@@ -272,6 +291,7 @@ CREATE TABLE IF NOT EXISTS `likes_boothstbl` (
 -- Table structure for table `likes_commentstbl`
 --
 
+DROP TABLE IF EXISTS `likes_commentstbl`;
 CREATE TABLE IF NOT EXISTS `likes_commentstbl` (
   `fkCommentNumber` int(11) NOT NULL,
   `fkUsername` varchar(32) NOT NULL,
@@ -286,6 +306,7 @@ CREATE TABLE IF NOT EXISTS `likes_commentstbl` (
 -- Table structure for table `like_values`
 --
 
+DROP TABLE IF EXISTS `like_values`;
 CREATE TABLE IF NOT EXISTS `like_values` (
   `value` tinyint(4) NOT NULL,
   PRIMARY KEY (`value`)
@@ -297,6 +318,7 @@ CREATE TABLE IF NOT EXISTS `like_values` (
 -- Table structure for table `locationstbl`
 --
 
+DROP TABLE IF EXISTS `locationstbl`;
 CREATE TABLE IF NOT EXISTS `locationstbl` (
   `location` varchar(8) NOT NULL,
   `val` int(11) NOT NULL
@@ -308,6 +330,7 @@ CREATE TABLE IF NOT EXISTS `locationstbl` (
 -- Table structure for table `logintbl`
 --
 
+DROP TABLE IF EXISTS `logintbl`;
 CREATE TABLE IF NOT EXISTS `logintbl` (
   `usernumber` int(32) NOT NULL AUTO_INCREMENT,
   `username` varchar(30) NOT NULL,
@@ -328,7 +351,7 @@ CREATE TABLE IF NOT EXISTS `logintbl` (
   `iconext` varchar(5) NOT NULL DEFAULT 'jpg',
   PRIMARY KEY (`usernumber`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=556 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=557 ;
 
 -- --------------------------------------------------------
 
@@ -336,6 +359,7 @@ CREATE TABLE IF NOT EXISTS `logintbl` (
 -- Table structure for table `mentionstbl`
 --
 
+DROP TABLE IF EXISTS `mentionstbl`;
 CREATE TABLE IF NOT EXISTS `mentionstbl` (
   `fkMentionerName` varchar(32) NOT NULL,
   `fkMentionedName` varchar(32) NOT NULL,
@@ -353,6 +377,7 @@ CREATE TABLE IF NOT EXISTS `mentionstbl` (
 -- Table structure for table `modactivitytbl`
 --
 
+DROP TABLE IF EXISTS `modactivitytbl`;
 CREATE TABLE IF NOT EXISTS `modactivitytbl` (
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `pkEventId` int(11) NOT NULL AUTO_INCREMENT,
@@ -367,6 +392,7 @@ CREATE TABLE IF NOT EXISTS `modactivitytbl` (
 -- Table structure for table `namesitetbl`
 --
 
+DROP TABLE IF EXISTS `namesitetbl`;
 CREATE TABLE IF NOT EXISTS `namesitetbl` (
   `fkUsername` varchar(32) NOT NULL,
   `sitename` varchar(32) NOT NULL,
@@ -380,6 +406,7 @@ CREATE TABLE IF NOT EXISTS `namesitetbl` (
 -- Table structure for table `newstbl`
 --
 
+DROP TABLE IF EXISTS `newstbl`;
 CREATE TABLE IF NOT EXISTS `newstbl` (
   `pkIndex` int(11) NOT NULL AUTO_INCREMENT COMMENT 'A unique index to identify the news story',
   `fkUsername` varchar(32) NOT NULL COMMENT 'The user that posted the story',
@@ -395,6 +422,7 @@ CREATE TABLE IF NOT EXISTS `newstbl` (
 -- Table structure for table `news_commentstbl`
 --
 
+DROP TABLE IF EXISTS `news_commentstbl`;
 CREATE TABLE IF NOT EXISTS `news_commentstbl` (
   `pkCommentNumber` int(32) NOT NULL AUTO_INCREMENT,
   `hash` varchar(32) NOT NULL,
@@ -416,6 +444,7 @@ CREATE TABLE IF NOT EXISTS `news_commentstbl` (
 -- Table structure for table `newuserstbl`
 --
 
+DROP TABLE IF EXISTS `newuserstbl`;
 CREATE TABLE IF NOT EXISTS `newuserstbl` (
   `fkUsername` varchar(32) NOT NULL,
   PRIMARY KEY (`fkUsername`)
@@ -427,6 +456,7 @@ CREATE TABLE IF NOT EXISTS `newuserstbl` (
 -- Table structure for table `phonekeystbl`
 --
 
+DROP TABLE IF EXISTS `phonekeystbl`;
 CREATE TABLE IF NOT EXISTS `phonekeystbl` (
   `fkUsername` varchar(30) NOT NULL,
   `fkPhoneID` varchar(128) NOT NULL,
@@ -440,6 +470,7 @@ CREATE TABLE IF NOT EXISTS `phonekeystbl` (
 -- Table structure for table `pmcopy`
 --
 
+DROP TABLE IF EXISTS `pmcopy`;
 CREATE TABLE IF NOT EXISTS `pmcopy` (
   `pkPMID` int(32) NOT NULL AUTO_INCREMENT,
   `fromUsername` varchar(32) NOT NULL,
@@ -456,6 +487,7 @@ CREATE TABLE IF NOT EXISTS `pmcopy` (
 -- Table structure for table `polltbl`
 --
 
+DROP TABLE IF EXISTS `polltbl`;
 CREATE TABLE IF NOT EXISTS `polltbl` (
   `fkUsername` varchar(32) NOT NULL,
   `pollname` varchar(32) NOT NULL,
@@ -470,6 +502,7 @@ CREATE TABLE IF NOT EXISTS `polltbl` (
 -- Table structure for table `privatemsgtbl`
 --
 
+DROP TABLE IF EXISTS `privatemsgtbl`;
 CREATE TABLE IF NOT EXISTS `privatemsgtbl` (
   `pkPMID` int(32) NOT NULL AUTO_INCREMENT,
   `fromUsername` varchar(32) NOT NULL,
@@ -478,7 +511,7 @@ CREATE TABLE IF NOT EXISTS `privatemsgtbl` (
   `message` longblob NOT NULL,
   `isRead` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`pkPMID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2858 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2884 ;
 
 -- --------------------------------------------------------
 
@@ -486,6 +519,7 @@ CREATE TABLE IF NOT EXISTS `privatemsgtbl` (
 -- Table structure for table `privatemsgtbl_copy`
 --
 
+DROP TABLE IF EXISTS `privatemsgtbl_copy`;
 CREATE TABLE IF NOT EXISTS `privatemsgtbl_copy` (
   `pkPMID` int(32) NOT NULL AUTO_INCREMENT,
   `fromUsername` varchar(32) NOT NULL,
@@ -502,6 +536,7 @@ CREATE TABLE IF NOT EXISTS `privatemsgtbl_copy` (
 -- Table structure for table `registertbl`
 --
 
+DROP TABLE IF EXISTS `registertbl`;
 CREATE TABLE IF NOT EXISTS `registertbl` (
   `code` varchar(128) NOT NULL,
   `username` varchar(32) NOT NULL,
@@ -517,6 +552,7 @@ CREATE TABLE IF NOT EXISTS `registertbl` (
 -- Table structure for table `remembertbl`
 --
 
+DROP TABLE IF EXISTS `remembertbl`;
 CREATE TABLE IF NOT EXISTS `remembertbl` (
   `cookie` varchar(32) NOT NULL,
   `fkUsername` varchar(32) NOT NULL,
@@ -529,6 +565,7 @@ CREATE TABLE IF NOT EXISTS `remembertbl` (
 -- Table structure for table `removedbooths`
 --
 
+DROP TABLE IF EXISTS `removedbooths`;
 CREATE TABLE IF NOT EXISTS `removedbooths` (
   `pkNumber` int(11) NOT NULL,
   `imageTitle` varchar(32) NOT NULL,
@@ -546,6 +583,7 @@ CREATE TABLE IF NOT EXISTS `removedbooths` (
 -- Table structure for table `security_values`
 --
 
+DROP TABLE IF EXISTS `security_values`;
 CREATE TABLE IF NOT EXISTS `security_values` (
   `val` tinyint(4) NOT NULL,
   PRIMARY KEY (`val`)
@@ -557,6 +595,7 @@ CREATE TABLE IF NOT EXISTS `security_values` (
 -- Table structure for table `sitemsgtbl`
 --
 
+DROP TABLE IF EXISTS `sitemsgtbl`;
 CREATE TABLE IF NOT EXISTS `sitemsgtbl` (
   `fkUsername` varchar(32) NOT NULL,
   `area` varchar(32) NOT NULL,
@@ -569,6 +608,7 @@ CREATE TABLE IF NOT EXISTS `sitemsgtbl` (
 -- Table structure for table `sitenamepairstbl`
 --
 
+DROP TABLE IF EXISTS `sitenamepairstbl`;
 CREATE TABLE IF NOT EXISTS `sitenamepairstbl` (
   `pkKey` int(11) NOT NULL AUTO_INCREMENT,
   `name1` varchar(32) NOT NULL,
@@ -582,6 +622,7 @@ CREATE TABLE IF NOT EXISTS `sitenamepairstbl` (
 -- Table structure for table `sitenamevotedtbl`
 --
 
+DROP TABLE IF EXISTS `sitenamevotedtbl`;
 CREATE TABLE IF NOT EXISTS `sitenamevotedtbl` (
   `fkUsername` varchar(32) NOT NULL,
   PRIMARY KEY (`fkUsername`)
@@ -593,15 +634,16 @@ CREATE TABLE IF NOT EXISTS `sitenamevotedtbl` (
 -- Table structure for table `sitenoticestbl`
 --
 
+DROP TABLE IF EXISTS `sitenoticestbl`;
 CREATE TABLE IF NOT EXISTS `sitenoticestbl` (
   `pkNum` int(32) NOT NULL AUTO_INCREMENT COMMENT 'a unique ID',
   `fkUsernumber` int(32) NOT NULL COMMENT 'the usernumber of the person who added the notice',
-  `message` varchar(128) NOT NULL,
+  `message` varchar(512) NOT NULL,
   `url` varchar(32) NOT NULL,
   `expiry` datetime NOT NULL COMMENT 'the time after which this notice will no longer be displayed',
   `datetime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'the time at which the message was posted',
   PRIMARY KEY (`pkNum`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -609,6 +651,7 @@ CREATE TABLE IF NOT EXISTS `sitenoticestbl` (
 -- Table structure for table `suggestiontbl`
 --
 
+DROP TABLE IF EXISTS `suggestiontbl`;
 CREATE TABLE IF NOT EXISTS `suggestiontbl` (
   `fkUsername` varchar(32) NOT NULL,
   `suggestion` varchar(128) NOT NULL
@@ -620,6 +663,7 @@ CREATE TABLE IF NOT EXISTS `suggestiontbl` (
 -- Table structure for table `testtbl`
 --
 
+DROP TABLE IF EXISTS `testtbl`;
 CREATE TABLE IF NOT EXISTS `testtbl` (
   `val` varchar(256) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
@@ -630,6 +674,7 @@ CREATE TABLE IF NOT EXISTS `testtbl` (
 -- Table structure for table `userlikestbl`
 --
 
+DROP TABLE IF EXISTS `userlikestbl`;
 CREATE TABLE IF NOT EXISTS `userlikestbl` (
   `fkUsername` varchar(32) NOT NULL,
   `lastCalculated` date NOT NULL,
@@ -643,6 +688,7 @@ CREATE TABLE IF NOT EXISTS `userlikestbl` (
 -- Table structure for table `usersabouttbl`
 --
 
+DROP TABLE IF EXISTS `usersabouttbl`;
 CREATE TABLE IF NOT EXISTS `usersabouttbl` (
   `fkUsername` varchar(32) NOT NULL,
   `about` varchar(4096) NOT NULL,
@@ -656,6 +702,7 @@ CREATE TABLE IF NOT EXISTS `usersabouttbl` (
 -- Table structure for table `usersbannedtbl`
 --
 
+DROP TABLE IF EXISTS `usersbannedtbl`;
 CREATE TABLE IF NOT EXISTS `usersbannedtbl` (
   `fkUsername` varchar(32) NOT NULL,
   `fkModeratorUsername` varchar(32) NOT NULL,
@@ -669,6 +716,7 @@ CREATE TABLE IF NOT EXISTS `usersbannedtbl` (
 -- Table structure for table `usersdevstbl`
 --
 
+DROP TABLE IF EXISTS `usersdevstbl`;
 CREATE TABLE IF NOT EXISTS `usersdevstbl` (
   `fkUsername` varchar(32) NOT NULL,
   `hash` varchar(128) NOT NULL
@@ -680,6 +728,7 @@ CREATE TABLE IF NOT EXISTS `usersdevstbl` (
 -- Table structure for table `usersecuritytbl`
 --
 
+DROP TABLE IF EXISTS `usersecuritytbl`;
 CREATE TABLE IF NOT EXISTS `usersecuritytbl` (
   `fkUsername` varchar(32) NOT NULL,
   `security` enum('NORMAL','SECURE','SUPER') NOT NULL,
@@ -692,6 +741,7 @@ CREATE TABLE IF NOT EXISTS `usersecuritytbl` (
 -- Table structure for table `usersprivacytbl`
 --
 
+DROP TABLE IF EXISTS `usersprivacytbl`;
 CREATE TABLE IF NOT EXISTS `usersprivacytbl` (
   `fkUsername` varchar(64) NOT NULL,
   `changeDateTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -705,6 +755,7 @@ CREATE TABLE IF NOT EXISTS `usersprivacytbl` (
 -- Table structure for table `userspublictbl`
 --
 
+DROP TABLE IF EXISTS `userspublictbl`;
 CREATE TABLE IF NOT EXISTS `userspublictbl` (
   `fkUsername` varchar(32) NOT NULL,
   `fkPassword` varchar(256) NOT NULL,
@@ -717,6 +768,7 @@ CREATE TABLE IF NOT EXISTS `userspublictbl` (
 -- Table structure for table `usersreportedtbl`
 --
 
+DROP TABLE IF EXISTS `usersreportedtbl`;
 CREATE TABLE IF NOT EXISTS `usersreportedtbl` (
   `fkUsername` varchar(32) NOT NULL,
   `fkReporterUsername` varchar(32) NOT NULL,
@@ -732,6 +784,7 @@ CREATE TABLE IF NOT EXISTS `usersreportedtbl` (
 -- Table structure for table `userssemipublictbl`
 --
 
+DROP TABLE IF EXISTS `userssemipublictbl`;
 CREATE TABLE IF NOT EXISTS `userssemipublictbl` (
   `fkUsername` varchar(32) NOT NULL,
   `fkPassword` varchar(256) NOT NULL,
@@ -744,6 +797,7 @@ CREATE TABLE IF NOT EXISTS `userssemipublictbl` (
 -- Table structure for table `userssuspendedtbl`
 --
 
+DROP TABLE IF EXISTS `userssuspendedtbl`;
 CREATE TABLE IF NOT EXISTS `userssuspendedtbl` (
   `fkUsername` varchar(32) NOT NULL,
   `fkModeratorUsername` varchar(32) NOT NULL,
